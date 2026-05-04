@@ -27,7 +27,7 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 **Key insight**: 1000–1200 tokens is the Pareto-optimal budget for this task. Beyond that, you are burning money for noise.
 
 ![Three-Stage Threshold: Win Rate vs Token Budget](docs/images/win_rate_curve.png)
-*Figure 1: The non-linear three-stage threshold effect observed across DeepSeek Flash, Pro, and Kimi models. The steepest improvement occurs between 800–1200 tokens.*
+*Figure 1: The non-linear three-stage threshold effect observed across DeepSeek Flash, Pro, and Kimi models. The steepest improvement occurs between 800–1200 tokens. **Schematic illustration — refer to `results/win_rate_data.json` for exact figures.***
 
 ### Five Core Thoughts
 
@@ -62,7 +62,7 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 **核心洞察**：1000–1200 tokens 是本任务的帕累托最优预算。超过此区间，就是在为噪声烧钱。
 
 ![三阶段阈值：胜率随 Token 预算变化曲线](docs/images/win_rate_curve.png)
-*图 1：DeepSeek Flash、Pro 与 Kimi 模型上观察到的非线性三阶段阈值效应。最陡峭的提升发生在 800–1200 tokens 区间。*
+*图 1：DeepSeek Flash、Pro 与 Kimi 模型上观察到的非线性三阶段阈值效应。最陡峭的提升发生在 800–1200 tokens 区间。**示意图 — 精确数据请参考 `results/win_rate_data.json`。***
 
 ### 五大核心思考
 
@@ -77,7 +77,7 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 5. **认知天花板假说**：更强的模型（Pro）存在内生的"认知饱和度" —— 其实际 Token 消耗不随预算增加而上升（r=0.015, ns）；而较弱模型（Flash）是预算驱动型（r=0.174, p<.001）。
 
 ![四格漫画：沙蟹 vs 海葵 — The Sand Pit 游戏流程](docs/images/comic_4panel_sand_crab_vs_anemone.png)
-*图 2：四格漫画可视化 — 沙蟹（Agent A）与海葵（Agent B）演绎游戏的四个阶段。详见 `docs/comic_prompts/` 获取完整提示词。*
+*图 2：四格漫画可视化 — 沙蟹（Agent A）与海葵（Agent B）演绎游戏的四个阶段。**示意图 — 游戏实际参数（坐标、半径、移动步长等）请参考 Game Rules 表格与 `config.py`。***
 
 ---
 
@@ -307,10 +307,10 @@ the_sand_pit/
 | Perception | 10.0 units | — |
 | Max Rounds | 50 | — |
 
-Agent A must navigate around the wall at x=25 to reach Agent B. The game tests spatial planning, obstacle avoidance, and strategic reasoning under token constraints.
+Agent A must navigate around the wall (a rectangular obstacle at x=25~26, y=10~48) to reach Agent B. The game tests spatial planning, obstacle avoidance, and strategic reasoning under token constraints.
 
 ![Game Arena: 50×50 Grid with Wall and Agents](docs/images/game_arena_diagram.png)
-*Figure 2: The 50×50 grid arena. Agent A (pursuer) starts left of the wall; Agent B (target) starts right. The wall at x=25 creates the cognitive bottleneck.*
+*Figure 2: The 50×50 grid arena. Agent A (pursuer) starts left of the wall; Agent B (target) starts right.**Schematic illustration — exact wall coordinates, spawn points, radii and movement parameters are defined in `config.py` and the Game Rules table above.***
 
 **Four Phases**:
 - **Phase 1 (Pre-wall)**: Straight-line approach. Budget elasticity = 0.
