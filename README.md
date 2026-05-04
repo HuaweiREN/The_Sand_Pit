@@ -2,6 +2,9 @@
 
 > **Can we quantify the "cognitive threshold" of an LLM by manipulating its token budget?**
 
+![Four-Panel Comic: Sand Crab vs Sea Anemone](docs/images/comic_4panel_sand_crab_vs_anemone.png)
+*Figure 1: A four-panel comic visualizing the four game phases through Sand Crab (Agent A) and Sea Anemone (Agent B). **Schematic illustration — exact game parameters (coordinates, radii, move step, etc.) are defined in the Game Rules table and `config.py`.***
+
 ---
 
 ## The Sand Pit
@@ -11,6 +14,9 @@
 When LLM Agents move from "chatbots" to "autonomous actors," every thought has a price. The Sand Pit is a 50x50 grid pursuit game designed to answer one question: **How much token budget does an LLM actually need to solve a spatial reasoning task — and where does the utility inflection point lie?**
 
 Through **724 controlled games** across two DeepSeek models (Flash & Pro) and ten token budgets (400–2000 tokens, plus 20K thinking mode), we discovered a **non-linear, three-stage threshold effect** that challenges the common assumption that "more tokens = more intelligence."
+
+![Three-Stage Threshold: Win Rate vs Token Budget](docs/images/win_rate_curve.png)
+*Figure 2: The non-linear three-stage threshold effect observed across DeepSeek Flash and Pro models. The steepest improvement occurs between 800–1200 tokens. **Schematic illustration — refer to `results/win_rate_data.json` for exact figures.***
 
 ### The Three-Stage Threshold
 
@@ -22,8 +28,8 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 
 **Key insight**: 1000–1200 tokens is the Pareto-optimal budget for this task. Beyond that, you are burning money for noise.
 
-![Three-Stage Threshold: Win Rate vs Token Budget](docs/images/win_rate_curve.png)
-*Figure 1: The non-linear three-stage threshold effect observed across DeepSeek Flash and Pro models. The steepest improvement occurs between 800–1200 tokens. **Schematic illustration — refer to `results/win_rate_data.json` for exact figures.***
+![Gameplay Demo](docs/images/gameplay_demo.gif)
+*Figure 3: A representative game session showing Agent A navigating around the wall to capture Agent B. Use `python replay_log.py <log_file>` to replay any logged game in full detail. **Schematic illustration — exact parameters are defined in `config.py` and the Game Rules table.***
 
 ### Five Core Thoughts
 
@@ -36,9 +42,6 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 4. **Parity Determinism**: In Phase 4 (hunt), win rate is determined by whether the round starts on an A-first or B-first turn (88% vs 14% at the same distance). The LLM does **not** spontaneously develop turn-order strategy, even at 20K tokens.
 
 5. **Cognitive Saturation**: Stronger models (Pro) reach an internal "cognitive ceiling" — their token consumption does not scale with budget (r=0.015, ns). Weaker models (Flash) are budget-driven (r=0.174, p<.001).
-
-![Four-Panel Comic: Sand Crab vs Sea Anemone](docs/images/comic_4panel_sand_crab_vs_anemone.png)
-*Figure 2: A four-panel comic visualizing the four game phases through Sand Crab (Agent A) and Sea Anemone (Agent B). **Schematic illustration — exact game parameters (coordinates, radii, move step, etc.) are defined in the Game Rules table and `config.py`.***
 
 ---
 
@@ -251,6 +254,9 @@ the_sand_pit/
 
 ## Game Rules
 
+![Game Arena: 50×50 Grid with Wall and Agents](docs/images/game_arena_diagram.png)
+*Figure 4: The 50×50 grid arena. Agent A (pursuer) starts left of the wall; Agent B (target) starts right. **Schematic illustration — exact wall coordinates, spawn points, radii and movement parameters are defined in `config.py` and the Game Rules table below.***
+
 | Parameter | Agent A (Pursuer) | Agent B (Target) |
 |-----------|-------------------|------------------|
 | Movement | Up to 3.0 units per turn | Stationary |
@@ -258,11 +264,6 @@ the_sand_pit/
 | Turn Order | Alternates each round | — |
 | Perception | 10.0 units | — |
 | Max Rounds | 50 | — |
-
-Agent A must navigate around the wall (a rectangular obstacle at x=25~26, y=10~48) to reach Agent B. The game tests spatial planning, obstacle avoidance, and strategic reasoning under token constraints.
-
-![Game Arena: 50×50 Grid with Wall and Agents](docs/images/game_arena_diagram.png)
-*Figure 3: The 50×50 grid arena. Agent A (pursuer) starts left of the wall; Agent B (target) starts right. **Schematic illustration — exact wall coordinates, spawn points, radii and movement parameters are defined in `config.py` and the Game Rules table above.***
 
 **Four Phases**:
 - **Phase 1 (Pre-wall)**: Straight-line approach. Budget elasticity = 0.
