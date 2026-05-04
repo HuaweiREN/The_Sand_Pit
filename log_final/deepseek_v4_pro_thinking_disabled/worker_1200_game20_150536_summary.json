@@ -1,0 +1,16 @@
+{
+  "experiment_id": "worker_1200_game20_150536",
+  "timestamp": "2026-04-26T15:11:52.637116",
+  "result": {
+    "winner": "Agent_B",
+    "total_rounds": 25,
+    "win_reason": "Captured opponent in round 25"
+  },
+  "statistics": {
+    "total_api_calls": 25,
+    "parse_errors": 2,
+    "parse_error_rate": 8.0,
+    "movement_clamps": 3,
+    "boundary_clamps": 0
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "experiment_id": "worker_1200_game09_184121",
+  "timestamp": "2026-04-26T18:51:43.307099",
+  "result": {
+    "winner": null,
+    "total_rounds": 50,
+    "win_reason": "Max rounds (50) reached"
+  },
+  "statistics": {
+    "total_api_calls": 50,
+    "parse_errors": 4,
+    "parse_error_rate": 8.0,
+    "movement_clamps": 2,
+    "boundary_clamps": 0
+  }
+}

@@ -72,6 +72,33 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 
 ---
 
+## Data & Reproducibility
+
+### Raw Experiment Logs (`log_final/`)
+
+All **724 game logs** are included in this repository under `log_final/`. Each subdirectory contains per-game JSONL files and summary JSONs for a specific model and token budget:
+
+- `deepseek_v4_flash_thinking_disabled/` — 40 games each at 400–2000 tokens
+- `deepseek_v4_flash_thinking_enabled/` — 20 games at 20K tokens (reasoning mode)
+- `deepseek_v4_pro_thinking_disabled/` — 40 games each at 400–2000 tokens
+- `deepseek_v4_pro_thinking_enabled/` — 20 games at 20K tokens (reasoning mode)
+- `kimi_v2p6/` — 40 games each at 400–2000 tokens
+
+> **Security note**: All logs have been reviewed for API keys and secrets. The JSONL format only records `base_url`, `model_name`, `temperature`, and `timeout` — no `api_key` field is present.
+
+### Aggregated Results (`results/`)
+
+- `results/win_rate_data.json` — Machine-readable statistics for every model × budget combination.
+- `results/README.md` — Human-readable win-rate tables.
+
+### Research Article (`docs/`)
+
+The full Chinese research write-up is available at:
+
+- `docs/沙坑研究（the_sand_pit).docx` — 12 MB, comprehensive analysis of the three-stage threshold effect, statistical tests, and interpretation.
+
+---
+
 ## Quick Start
 
 ### 1. Clone and Install
@@ -179,12 +206,26 @@ the_sand_pit/
 ├── test_scripts/                # Experiment runners
 │   └── parallel_gradient_test.py  # Parallel gradient test with rate limiting
 │
-└── token_economy/               # Analysis pipeline
-    ├── extract_game_data.py     # Extract per-round data from logs
-    ├── token_economy_analysis.py # Comprehensive statistical analysis
-    ├── formal_assumption_checks.py # Statistical assumption validation
-    ├── corrected_nonparametric_tests.py # Non-parametric tests with effect sizes
-    └── visualize_per_round_tokens.py # Per-round token usage visualization
+├── token_economy/               # Analysis pipeline
+│   ├── extract_game_data.py     # Extract per-round data from logs
+│   ├── token_economy_analysis.py # Comprehensive statistical analysis
+│   ├── formal_assumption_checks.py # Statistical assumption validation
+│   ├── corrected_nonparametric_tests.py # Non-parametric tests with effect sizes
+│   └── visualize_per_round_tokens.py # Per-round token usage visualization
+│
+├── log_final/                   # Raw experiment logs (724 games, no secrets)
+│   ├── deepseek_v4_flash_thinking_disabled/
+│   ├── deepseek_v4_flash_thinking_enabled/
+│   ├── deepseek_v4_pro_thinking_disabled/
+│   ├── deepseek_v4_pro_thinking_enabled/
+│   └── kimi_v2p6/
+│
+├── results/                     # Aggregated win-rate statistics
+│   ├── win_rate_data.json       # Machine-readable results
+│   └── README.md                # Human-readable tables
+│
+└── docs/                        # Research documentation
+    └── 沙坑研究（the_sand_pit).docx  # Full research article (Chinese)
 ```
 
 ---

@@ -41,9 +41,11 @@ env/
 
 # Logs and experimental outputs (generated artifacts)
 logs/
-log_final/
 outputs/
 *.jsonl
+
+# Note: log_final/ is intentionally NOT ignored for reproducibility.
+# It contains experiment data (no API keys — verified).
 
 # Analysis artifacts (large/generated)
 token_economy/figures/
@@ -51,8 +53,9 @@ token_economy/figures_assumptions/
 token_economy/*.csv
 token_economy/*.png
 
-# Documents
+# Documents (allow research paper in docs/)
 *.docx
+!docs/*.docx
 
 # OS
 .DS_Store

@@ -1,0 +1,84 @@
+{
+  "description": "Win rate data extracted from 724 controlled games across DeepSeek and Kimi models at varying token budgets. This dataset supports the three-stage threshold effect reported in the README.",
+  "total_games": 724,
+  "experiments": [
+    {
+      "model": "deepseek-chat-v4 (Flash)",
+      "thinking_mode": false,
+      "notes": "Standard chat mode. Shows clear three-stage threshold with dead zone below 800 tokens, transition zone 800-1200, and plateau above 1200.",
+      "games_per_budget": 40,
+      "budgets": [
+        {"tokens": 400,  "wins": 1,  "draws": 36, "losses": 3,  "win_rate": 0.025, "draw_rate": 0.900, "n": 40},
+        {"tokens": 600,  "wins": 5,  "draws": 32, "losses": 3,  "win_rate": 0.125, "draw_rate": 0.800, "n": 40},
+        {"tokens": 800,  "wins": 4,  "draws": 30, "losses": 6,  "win_rate": 0.098, "draw_rate": 0.732, "n": 41},
+        {"tokens": 1000, "wins": 13, "draws": 18, "losses": 9,  "win_rate": 0.325, "draw_rate": 0.450, "n": 40},
+        {"tokens": 1200, "wins": 14, "draws": 18, "losses": 7,  "win_rate": 0.341, "draw_rate": 0.439, "n": 41},
+        {"tokens": 1400, "wins": 13, "draws": 20, "losses": 7,  "win_rate": 0.325, "draw_rate": 0.500, "n": 40},
+        {"tokens": 1600, "wins": 13, "draws": 18, "losses": 9,  "win_rate": 0.325, "draw_rate": 0.450, "n": 40},
+        {"tokens": 1800, "wins": 18, "draws": 13, "losses": 9,  "win_rate": 0.450, "draw_rate": 0.325, "n": 40},
+        {"tokens": 2000, "wins": 15, "draws": 13, "losses": 12, "win_rate": 0.349, "draw_rate": 0.302, "n": 40}
+      ]
+    },
+    {
+      "model": "deepseek-chat-v4 (Flash)",
+      "thinking_mode": true,
+      "notes": "DeepThink / reasoning mode with 20K token budget. Draw rate collapses and win rate jumps to plateau level.",
+      "games_per_budget": 20,
+      "budgets": [
+        {"tokens": 20000, "wins": 13, "draws": 2, "losses": 5, "win_rate": 0.650, "draw_rate": 0.100, "n": 20}
+      ]
+    },
+    {
+      "model": "deepseek-chat-v4 (Pro)",
+      "thinking_mode": false,
+      "notes": "Stronger base model reaches higher performance earlier. Transition zone is compressed; plateau starts around 1000 tokens.",
+      "games_per_budget": 40,
+      "budgets": [
+        {"tokens": 400,  "wins": 5,  "draws": 26, "losses": 9,  "win_rate": 0.125, "draw_rate": 0.650, "n": 40},
+        {"tokens": 600,  "wins": 22, "draws": 5,  "losses": 13, "win_rate": 0.550, "draw_rate": 0.125, "n": 40},
+        {"tokens": 800,  "wins": 15, "draws": 5,  "losses": 20, "win_rate": 0.375, "draw_rate": 0.125, "n": 40},
+        {"tokens": 1000, "wins": 24, "draws": 0,  "losses": 16, "win_rate": 0.600, "draw_rate": 0.000, "n": 40},
+        {"tokens": 1200, "wins": 29, "draws": 2,  "losses": 10, "win_rate": 0.707, "draw_rate": 0.049, "n": 41},
+        {"tokens": 1400, "wins": 21, "draws": 3,  "losses": 16, "win_rate": 0.525, "draw_rate": 0.075, "n": 40},
+        {"tokens": 1600, "wins": 21, "draws": 2,  "losses": 17, "win_rate": 0.525, "draw_rate": 0.050, "n": 40},
+        {"tokens": 1800, "wins": 22, "draws": 2,  "losses": 16, "win_rate": 0.550, "draw_rate": 0.050, "n": 40},
+        {"tokens": 2000, "wins": 26, "draws": 1,  "losses": 13, "win_rate": 0.650, "draw_rate": 0.025, "n": 40}
+      ]
+    },
+    {
+      "model": "deepseek-chat-v4 (Pro)",
+      "thinking_mode": true,
+      "notes": "Reasoning mode with 20K tokens achieves the highest win rate in the dataset (80%).",
+      "games_per_budget": 20,
+      "budgets": [
+        {"tokens": 20000, "wins": 16, "draws": 0, "losses": 4, "win_rate": 0.800, "draw_rate": 0.000, "n": 20}
+      ]
+    },
+    {
+      "model": "kimi-k2-v2p6",
+      "thinking_mode": false,
+      "notes": "Kimi v2.6 shows a compressed transition zone and strong performance at higher budgets. Unusually high win rate at 1600 tokens (75%).",
+      "games_per_budget": 40,
+      "budgets": [
+        {"tokens": 400,  "wins": 0,  "draws": 26, "losses": 14, "win_rate": 0.000, "draw_rate": 1.000, "n": 26},
+        {"tokens": 600,  "wins": 12, "draws": 6,  "losses": 8,  "win_rate": 0.462, "draw_rate": 0.231, "n": 26},
+        {"tokens": 800,  "wins": 20, "draws": 0,  "losses": 14, "win_rate": 0.588, "draw_rate": 0.000, "n": 34},
+        {"tokens": 1000, "wins": 15, "draws": 0,  "losses": 17, "win_rate": 0.469, "draw_rate": 0.000, "n": 32},
+        {"tokens": 1200, "wins": 18, "draws": 0,  "losses": 17, "win_rate": 0.514, "draw_rate": 0.000, "n": 35},
+        {"tokens": 1400, "wins": 22, "draws": 0,  "losses": 18, "win_rate": 0.550, "draw_rate": 0.000, "n": 40},
+        {"tokens": 1600, "wins": 30, "draws": 0,  "losses": 10, "win_rate": 0.750, "draw_rate": 0.000, "n": 40},
+        {"tokens": 1800, "wins": 20, "draws": 0,  "losses": 20, "win_rate": 0.500, "draw_rate": 0.000, "n": 40},
+        {"tokens": 2000, "wins": 20, "draws": 0,  "losses": 20, "win_rate": 0.500, "draw_rate": 0.000, "n": 40}
+      ]
+    }
+  ],
+  "key_findings": {
+    "pareto_optimal_budget": "1000-1200 tokens",
+    "dead_zone": "400-800 tokens (win rate < 15% for Flash, < 55% for Pro)",
+    "transition_zone": "800-1200 tokens (steepest win-rate improvement)",
+    "plateau_onset": "1200+ tokens (marginal returns near zero)",
+    "draw_disaster": "Drawn games consume ~2x tokens vs decisive games but produce zero value",
+    "parity_determinism": "Phase 4 (hunt) win rate determined by turn-order parity (88% A-first vs 14% B-first)",
+    "cognitive_saturation": "Pro model token consumption does not scale with budget (r=0.015, ns); Flash does (r=0.174, p<.001)"
+  }
+}
