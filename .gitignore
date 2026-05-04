@@ -54,8 +54,8 @@ token_economy/*.csv
 token_economy/*.png
 
 # Documents (allow research paper in docs/)
-*.docx
-!docs/*.docx
+*.pdf
+!docs/*.pdf
 
 # OS
 .DS_Store

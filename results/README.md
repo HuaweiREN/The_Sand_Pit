@@ -1,6 +1,6 @@
 # Experimental Results
 
-This directory contains the aggregated win-rate data extracted from **724 controlled games** run across DeepSeek (Flash & Pro) and Kimi models.
+This directory contains the aggregated win-rate data extracted from **724 controlled games** run across DeepSeek (Flash & Pro).
 
 ## Files
 
@@ -47,20 +47,6 @@ This directory contains the aggregated win-rate data extracted from **724 contro
 | Tokens | Wins | Draws | Losses | Win Rate | Draw Rate |
 |--------|------|-------|--------|----------|-----------|
 | 20000  | 16   | 0     | 4      | 80.0%    | 0.0%      |
-
-### Kimi v2.6
-
-| Tokens | Wins | Draws | Losses | Win Rate | Draw Rate |
-|--------|------|-------|--------|----------|-----------|
-| 400    | 0    | 26    | 14     | 0.0%     | 100.0%    |
-| 600    | 12   | 6     | 8      | 46.2%    | 23.1%     |
-| 800    | 20   | 0     | 14     | 58.8%    | 0.0%      |
-| 1000   | 15   | 0     | 17     | 46.9%    | 0.0%      |
-| 1200   | 18   | 0     | 17     | 51.4%    | 0.0%      |
-| 1400   | 22   | 0     | 18     | 55.0%    | 0.0%      |
-| 1600   | 30   | 0     | 10     | 75.0%    | 0.0%      |
-| 1800   | 20   | 0     | 20     | 50.0%    | 0.0%      |
-| 2000   | 20   | 0     | 20     | 50.0%    | 0.0%      |
 
 ## Interpretation
 

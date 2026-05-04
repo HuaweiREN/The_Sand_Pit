@@ -1,5 +1,5 @@
 {
-  "description": "Win rate data extracted from 724 controlled games across DeepSeek and Kimi models at varying token budgets. This dataset supports the three-stage threshold effect reported in the README.",
+  "description": "Win rate data extracted from controlled games across DeepSeek Flash and Pro models at varying token budgets. This dataset supports the three-stage threshold effect reported in the README.",
   "total_games": 724,
   "experiments": [
     {
@@ -52,23 +52,6 @@
       "games_per_budget": 20,
       "budgets": [
         {"tokens": 20000, "wins": 16, "draws": 0, "losses": 4, "win_rate": 0.800, "draw_rate": 0.000, "n": 20}
-      ]
-    },
-    {
-      "model": "kimi-k2-v2p6",
-      "thinking_mode": false,
-      "notes": "Kimi v2.6 shows a compressed transition zone and strong performance at higher budgets. Unusually high win rate at 1600 tokens (75%).",
-      "games_per_budget": 40,
-      "budgets": [
-        {"tokens": 400,  "wins": 0,  "draws": 26, "losses": 14, "win_rate": 0.000, "draw_rate": 1.000, "n": 26},
-        {"tokens": 600,  "wins": 12, "draws": 6,  "losses": 8,  "win_rate": 0.462, "draw_rate": 0.231, "n": 26},
-        {"tokens": 800,  "wins": 20, "draws": 0,  "losses": 14, "win_rate": 0.588, "draw_rate": 0.000, "n": 34},
-        {"tokens": 1000, "wins": 15, "draws": 0,  "losses": 17, "win_rate": 0.469, "draw_rate": 0.000, "n": 32},
-        {"tokens": 1200, "wins": 18, "draws": 0,  "losses": 17, "win_rate": 0.514, "draw_rate": 0.000, "n": 35},
-        {"tokens": 1400, "wins": 22, "draws": 0,  "losses": 18, "win_rate": 0.550, "draw_rate": 0.000, "n": 40},
-        {"tokens": 1600, "wins": 30, "draws": 0,  "losses": 10, "win_rate": 0.750, "draw_rate": 0.000, "n": 40},
-        {"tokens": 1800, "wins": 20, "draws": 0,  "losses": 20, "win_rate": 0.500, "draw_rate": 0.000, "n": 40},
-        {"tokens": 2000, "wins": 20, "draws": 0,  "losses": 20, "win_rate": 0.500, "draw_rate": 0.000, "n": 40}
       ]
     }
   ],

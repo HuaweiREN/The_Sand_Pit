@@ -1,10 +1,6 @@
 # The Sand Pit
 
 > **Can we quantify the "cognitive threshold" of an LLM by manipulating its token budget?**
->
-> **能否通过操控 Token 预算，量化 LLM 的「认知阈值」？**
-
-[English](#the-sand-pit-) | [中文](#沙盘-the-sand-pit)
 
 ---
 
@@ -27,7 +23,7 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 **Key insight**: 1000–1200 tokens is the Pareto-optimal budget for this task. Beyond that, you are burning money for noise.
 
 ![Three-Stage Threshold: Win Rate vs Token Budget](docs/images/win_rate_curve.png)
-*Figure 1: The non-linear three-stage threshold effect observed across DeepSeek Flash, Pro, and Kimi models. The steepest improvement occurs between 800–1200 tokens. **Schematic illustration — refer to `results/win_rate_data.json` for exact figures.***
+*Figure 1: The non-linear three-stage threshold effect observed across DeepSeek Flash and Pro models. The steepest improvement occurs between 800–1200 tokens. **Schematic illustration — refer to `results/win_rate_data.json` for exact figures.***
 
 ### Five Core Thoughts
 
@@ -41,43 +37,8 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 
 5. **Cognitive Saturation**: Stronger models (Pro) reach an internal "cognitive ceiling" — their token consumption does not scale with budget (r=0.015, ns). Weaker models (Flash) are budget-driven (r=0.174, p<.001).
 
----
-
-## 沙盘 (The Sand Pit)
-
-**参数化、可自动化的 LLM 多智能体对抗模拟系统，用于 Token 经济学研究**
-
-当 LLM 智能体从"聊天机器人"进化为"自主行动体"时，每一次"思考"都有可量化的经济成本。沙盘是一个 50×50 网格追逐博弈，旨在回答一个问题：**一个 LLM 解决空间推理任务究竟需要多少 Token 预算 —— 它的效用拐点在哪里？**
-
-通过对两种 DeepSeek 模型（Flash 与 Pro）在十个 Token 预算梯度（400–2000 tokens，以及 20K 深度思考模式）下进行的 **724 局对照实验**，我们发现了一个挑战"更多 Token = 更高智能"常识假设的**非线性三阶段阈值效应**。
-
-### 三阶段阈值效应
-
-| 阶段 | Token 预算 | 胜率 | 现象 |
-|------|-----------|------|------|
-| **死区** | 400–800 | <15% | 认知带宽不足，在墙前随机游走 |
-| **跃迁区** | 800–1200 | 35% → 70% | "黄金 ROI 区间" —— 预算购买的是绕过障碍的规划能力 |
-| **平台期** | 1200+ | 持平 | 边际回报趋近于零，额外 Token 买到的只是噪声 |
-
-**核心洞察**：1000–1200 tokens 是本任务的帕累托最优预算。超过此区间，就是在为噪声烧钱。
-
-![三阶段阈值：胜率随 Token 预算变化曲线](docs/images/win_rate_curve.png)
-*图 1：DeepSeek Flash、Pro 与 Kimi 模型上观察到的非线性三阶段阈值效应。最陡峭的提升发生在 800–1200 tokens 区间。**示意图 — 精确数据请参考 `results/win_rate_data.json`。***
-
-### 五大核心思考
-
-1. **预算效应高度阶段锁定**：Token 预算仅在 Phase 2（绕墙阶段）有效。Phase 1/3 是纯物理通勤（预算弹性 = 0）；Phase 4 由回合奇偶性主导，与预算无关。
-
-2. **过度思考悖论**：高 Token 回合产生的空间进展反而更低，意图-行动偏差更大（56.8° vs 35.1°）。更多"思考"不等于更好"行动" —— 它是 Agent 陷入困境的信号。
-
-3. **平局经济学灾难**：平局游戏的 Token 消耗约为决胜游戏的 2 倍（中位数 65,958 vs 36,808 tokens），但产出为零。降低平局率是成本优化的最高杠杆点。
-
-4. **奇偶性决定论**：在 Phase 4（追击阶段），相同距离下 A-first 轮次的胜率为 88%，B-first 轮次骤降至 14%。即使给予 20K tokens 的极端预算，LLM 也**不会**自发涌现出先后手博弈策略。
-
-5. **认知天花板假说**：更强的模型（Pro）存在内生的"认知饱和度" —— 其实际 Token 消耗不随预算增加而上升（r=0.015, ns）；而较弱模型（Flash）是预算驱动型（r=0.174, p<.001）。
-
-![四格漫画：沙蟹 vs 海葵 — The Sand Pit 游戏流程](docs/images/comic_4panel_sand_crab_vs_anemone.png)
-*图 2：四格漫画可视化 — 沙蟹（Agent A）与海葵（Agent B）演绎游戏的四个阶段。**示意图 — 游戏实际参数（坐标、半径、移动步长等）请参考 Game Rules 表格与 `config.py`。***
+![Four-Panel Comic: Sand Crab vs Sea Anemone](docs/images/comic_4panel_sand_crab_vs_anemone.png)
+*Figure 2: A four-panel comic visualizing the four game phases through Sand Crab (Agent A) and Sea Anemone (Agent B). **Schematic illustration — exact game parameters (coordinates, radii, move step, etc.) are defined in the Game Rules table and `config.py`.***
 
 ---
 
@@ -91,7 +52,6 @@ All **724 game logs** are included in this repository under `log_final/`. Each s
 - `deepseek_v4_flash_thinking_enabled/` — 20 games at 20K tokens (reasoning mode)
 - `deepseek_v4_pro_thinking_disabled/` — 40 games each at 400–2000 tokens
 - `deepseek_v4_pro_thinking_enabled/` — 20 games at 20K tokens (reasoning mode)
-- `kimi_v2p6/` — 40 games each at 400–2000 tokens
 
 > **Security note**: All logs have been reviewed for API keys and secrets. The JSONL format only records `base_url`, `model_name`, `temperature`, and `timeout` — no `api_key` field is present.
 
@@ -139,20 +99,6 @@ The tables below show the raw outcome counts for every model and token budget te
 |--------|------|-------|--------|---|----------|-----------|
 | 20000 | 16 | 0 | 4 | 20 | 80.0% | 0.0% |
 
-#### Kimi v2.6
-
-| Budget | Wins | Draws | Losses | N | Win Rate | Draw Rate |
-|--------|------|-------|--------|---|----------|-----------|
-| 400 | 0 | 26 | 14 | 26 | 0.0% | 100.0% |
-| 600 | 12 | 6 | 8 | 26 | 46.2% | 23.1% |
-| 800 | 20 | 0 | 14 | 34 | 58.8% | 0.0% |
-| 1000 | 15 | 0 | 17 | 32 | 46.9% | 0.0% |
-| 1200 | 18 | 0 | 17 | 35 | 51.4% | 0.0% |
-| 1400 | 22 | 0 | 18 | 40 | 55.0% | 0.0% |
-| 1600 | 30 | 0 | 10 | 40 | 75.0% | 0.0% |
-| 1800 | 20 | 0 | 20 | 40 | 50.0% | 0.0% |
-| 2000 | 20 | 0 | 20 | 40 | 50.0% | 0.0% |
-
 ### Aggregated Results (`results/`)
 
 - `results/win_rate_data.json` — Machine-readable statistics for every model × budget combination.
@@ -160,9 +106,11 @@ The tables below show the raw outcome counts for every model and token budget te
 
 ### Research Article (`docs/`)
 
-The full Chinese research write-up is available at:
+The full research write-up (in Chinese) is available as a PDF:
 
-- `docs/沙坑研究（the_sand_pit).docx` — 12 MB, comprehensive analysis of the three-stage threshold effect, statistical tests, and interpretation.
+- [`docs/沙坑研究（the_sand_pit).pdf`](docs/沙坑研究（the_sand_pit).pdf) — 12 MB, comprehensive analysis of the three-stage threshold effect, statistical tests, and interpretation.
+
+> Click the link above to view or download the PDF directly from the repository.
 
 ---
 
@@ -284,15 +232,19 @@ the_sand_pit/
 │   ├── deepseek_v4_flash_thinking_disabled/
 │   ├── deepseek_v4_flash_thinking_enabled/
 │   ├── deepseek_v4_pro_thinking_disabled/
-│   ├── deepseek_v4_pro_thinking_enabled/
-│   └── kimi_v2p6/
+│   └── deepseek_v4_pro_thinking_enabled/
 │
 ├── results/                     # Aggregated win-rate statistics
 │   ├── win_rate_data.json       # Machine-readable results
 │   └── README.md                # Human-readable tables
 │
-└── docs/                        # Research documentation
-    └── 沙坑研究（the_sand_pit).docx  # Full research article (Chinese)
+├── docs/                        # Research documentation
+│   ├── 沙坑研究（the_sand_pit).pdf  # Full research article (PDF)
+│   ├── comic_prompt.md          # 4-panel comic generation prompt
+│   └── images/                  # README assets (diagrams, comics, charts)
+│       ├── win_rate_curve.png
+│       ├── game_arena_diagram.png
+│       └── comic_4panel_sand_crab_vs_anemone.png
 ```
 
 ---
@@ -310,7 +262,7 @@ the_sand_pit/
 Agent A must navigate around the wall (a rectangular obstacle at x=25~26, y=10~48) to reach Agent B. The game tests spatial planning, obstacle avoidance, and strategic reasoning under token constraints.
 
 ![Game Arena: 50×50 Grid with Wall and Agents](docs/images/game_arena_diagram.png)
-*Figure 2: The 50×50 grid arena. Agent A (pursuer) starts left of the wall; Agent B (target) starts right.**Schematic illustration — exact wall coordinates, spawn points, radii and movement parameters are defined in `config.py` and the Game Rules table above.***
+*Figure 3: The 50×50 grid arena. Agent A (pursuer) starts left of the wall; Agent B (target) starts right. **Schematic illustration — exact wall coordinates, spawn points, radii and movement parameters are defined in `config.py` and the Game Rules table above.***
 
 **Four Phases**:
 - **Phase 1 (Pre-wall)**: Straight-line approach. Budget elasticity = 0.
@@ -379,6 +331,27 @@ The system uses a JSON configuration file. See `config.example.json` for all ava
 
 ---
 
+## Adding a GIF to This README
+
+If you record a gameplay GIF and want to add it to this README:
+
+1. **Place the GIF** in `docs/images/` (e.g., `docs/images/gameplay_demo.gif`)
+2. **Add the reference** in this file:
+   ```markdown
+   ![Gameplay Demo](docs/images/gameplay_demo.gif)
+   *Figure X: A recorded gameplay session showing Agent A navigating around the wall to capture Agent B.*
+   ```
+3. **Commit and push**:
+   ```bash
+   git add docs/images/gameplay_demo.gif README.md
+   git commit -m "Add gameplay demo GIF"
+   git push origin main
+   ```
+
+> GitHub automatically renders GIFs in READMEs just like PNGs. Recommended: keep the file under 5 MB for fast loading.
+
+---
+
 ## Citation
 
 If you use The Sand Pit in your research, please cite:
@@ -387,7 +360,7 @@ If you use The Sand Pit in your research, please cite:
 @software{the_sand_pit,
   title = {The Sand Pit: A Parameterized LLM Multi-Agent Adversarial Simulation System},
   author = {Huawei REN},
-  year = {MAY2026},
+  year = {2026},
   url = {<repo-url>}
 }
 ```
