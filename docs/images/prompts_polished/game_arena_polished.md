@@ -1,19 +1,19 @@
 # Polished Prompt: The Sand Pit Arena Diagram
-# Generated with baoyu-infographic (isometric-map layout × technical-schematic style)
+# Generated with baoyu-infographic (flat 2D top-down grid × technical-schematic style)
 
 Create a professional infographic following these specifications:
 
 ## Image Specifications
 
 - **Type**: Infographic / Technical Diagram
-- **Layout**: Isometric-Map — 3D-style spatial layout showing arena grid, obstacles, agent positions, and movement paths
+- **Layout**: Flat 2D Top-Down Grid — pure overhead bird's-eye view showing arena grid, obstacles, agent positions, and movement paths
 - **Style**: Technical-Schematic — engineering precision with blueprint aesthetics, clean geometry, and dimension annotations
 - **Aspect Ratio**: 4:3 (landscape)
 - **Language**: Bilingual (English primary, Chinese secondary)
 
 ## Core Principles
 
-- Follow the isometric-map layout precisely: consistent 30° angle, spatial relationships visible, bird's-eye view
+- **Pure 2D top-down view**: No isometric, no 3D, no perspective, no height/depth illusion. The camera is directly above the grid looking straight down.
 - Apply technical-schematic aesthetics consistently: blueprint grid, dimension lines, technical symbols, all-caps labels
 - Keep information concise; highlight spatial relationships and game mechanics
 - Use ample whitespace for visual clarity; maintain clear visual hierarchy
@@ -27,16 +27,16 @@ Create a professional infographic following these specifications:
 - Labels should be clear and appropriately sized
 - Bilingual: English labels primary, Chinese annotations secondary in smaller size
 
-## Layout Guidelines (Isometric-Map)
+## Layout Guidelines (Flat 2D Top-Down)
 
 - Title block at top-left corner: "THE SAND PIT ARENA" / "沙盘竞技场"
-- Main arena grid (center, 60% of frame): 50×50 grid in isometric 3D perspective
-- Agent A zone (left of wall): Sand crab icon with movement/capture radii
-- Agent B zone (right of wall): Sea anemone icon with capture radius
-- Wall obstacle (center): Vertical barrier with gap
-- Path indicator: Curved dashed arrow showing optimal route
+- Main arena grid (center, 60% of frame): 50×50 grid in **pure 2D top-down view**, camera directly overhead
+- Agent A zone (left of wall): Sand crab **top-down 2D icon** with movement/capture radii as flat circles
+- Agent B zone (right of wall): Sea anemone **top-down 2D icon** with capture radius as flat circle
+- Wall obstacle (center): A filled rectangle on the 2D grid, clearly showing its boundaries and the two gaps at top and bottom
+- Path indicator: **2D planar dashed arrow** on the grid showing the route
 - Legend panel (bottom-right or side): symbol explanations
-- Coordinate rulers: X and Y axis markers (0, 10, 20, 30, 40, 50)
+- Coordinate rulers: X and Y axis markers (0, 10, 20, 30, 40, 50) along grid edges
 
 ## Style Guidelines (Technical-Schematic)
 
@@ -48,20 +48,20 @@ Create a professional infographic following these specifications:
 - Grid lines: Light gray (#D1D5DB) on light background, or white (#FFFFFF) at 30% opacity on blueprint background
 
 ### Visual Elements
-- Geometric precision throughout: exact 30° isometric angle
+- **Pure 2D flat geometry**: all shapes viewed from directly above, no depth or perspective
 - Grid pattern with coordinate markers every 5 units
-- Dimension lines and measurement annotations (e.g., "50×50", "x=25", "3.0 units")
-- Technical symbols: circles with cross-hair centers for radii, arrowheads for direction
+- Dimension lines and measurement annotations (e.g., "50×50", "x=25~26", "3.0 units")
+- Technical symbols: flat circles (not spheres) for radii, straight 2D arrowheads for direction
 - Clean vector shapes: no sketchy or organic lines
 - Consistent stroke weights: hairlines for grid, medium for boundaries, thick for wall
 - Callout lines with dots at attachment points, label boxes at endpoints
-- Optional zoomed detail section for the wall gap
+- Wall shown as a filled rectangle on the 2D grid with clear edges
 
 ### Typography
 - Technical stencil or clean sans-serif
 - All-caps labels for major elements ("AGENT A", "AGENT B", "WALL")
 - Measurement annotations in smaller size with unit suffix
-- Floating labels for isometric elements
+- Floating labels positioned flat on the 2D plane
 - Coordinate labels: "X=0", "X=25", "X=50", "Y=0", "Y=50"
 
 ### Style Enforcement
@@ -91,21 +91,21 @@ Create a professional infographic following these specifications:
 
 ### Agent A — Sand Crab (Pursuer)
 - Position: Left side of wall, approximately (5, 25)
-- Icon: Simplified top-down isometric crab shape
-  - Carapace: Warm sand color (#D4A373)
-  - Left claw: Coral red highlight (#E76F51), oversized
-  - Eyes: Two small amber dots (#F4A261)
-- Movement range: Dashed circle, radius = 3.0 units, labeled "MOVE = 3.0"
-- Capture radius: Smaller solid circle, radius = 0.5 units, labeled "CAPTURE A = 0.5"
-- Perception radius: Large dotted circle, radius = 10.0 units, labeled "PERCEPTION = 10.0"
+- Icon: **Flat 2D top-down crab icon** — viewed directly from above, no side profile, no depth
+  - Carapace: Warm sand color (#D4A373), roughly circular/oval shape
+  - Left claw: Coral red highlight (#E76F51), visible as an asymmetric bulge on the left side of the top-down shape
+  - Eyes: Two small amber dots (#F4A261) on the front edge
+- Movement range: **Flat dashed circle** on the 2D grid, radius = 3.0 units, labeled "MOVE = 3.0"
+- Capture radius: **Flat smaller solid circle**, radius = 0.5 units, labeled "CAPTURE A = 0.5"
+- Perception radius: **Flat large dotted circle**, radius = 10.0 units, labeled "PERCEPTION = 10.0"
 - Label: "AGENT A (PURSUER)" / "Agent A（追击者）"
 
 ### Agent B — Sea Anemone (Target)
 - Position: Right side of wall, approximately (40, 25)
-- Icon: Simplified top-down isometric anemone shape
-  - Base: Teal rock (#A8DADC)
-  - Tentacles: Pink gradient (#F4A3C0 to #E85D8A), radiating outward
-- Capture radius: Dotted circle, radius = 3.0 units, labeled "CAPTURE B = 3.0"
+- Icon: **Flat 2D top-down anemone icon** — viewed directly from above, no side profile
+  - Base: Teal rock (#A8DADC), circular shape
+  - Tentacles: Pink gradient (#F4A3C0 to #E85D8A), shown as radiating petals/segments in the 2D top-down view
+- Capture radius: **Flat dotted circle** on the 2D grid, radius = 3.0 units, labeled "CAPTURE B = 3.0"
 - Label: "AGENT B (TARGET)" / "Agent B（目标）"
 
 ### Optimal Path & Phase 2 Detour (P2 绕行路径)
@@ -115,7 +115,7 @@ Create a professional infographic following these specifications:
   1. From (5, 25), move **downward** to approximately (5, 8) — approaching the lower gap
   2. Move **horizontally right** through the lower gap (x: 5→26, y≈8) — crossing to the other side of the wall
   3. From (26, 8), move **up and right** toward Agent B (40, 25)
-- Arrow style: Coral red (#E76F51), dashed line, arrowhead at end near Agent B
+- Arrow style: **Flat 2D dashed arrow** on the grid plane, coral red (#E76F51), arrowhead pointing toward Agent B
 - Path segmented with phase labels:
   - **P1** (green dot): (5,25) → descent start — "Phase 1: Straight Commute"
   - **P2** (yellow dot): downward detour + gap crossing — "Phase 2: Cognitive Bottleneck / 认知瓶颈"
