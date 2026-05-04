@@ -80,11 +80,14 @@ Create a professional infographic following these specifications:
 - Coordinate labels on all four edges: 0, 10, 20, 30, 40, 50
 - Background fill: Very light sand color (#F5F5DC) inside grid area
 
-### Wall Obstacle
-- Position: Vertical wall at x=25, spanning full height (y=0 to y=50)
-- Appearance: Dark gray (#374151), 2-unit thick, with diagonal hatch pattern
-- Gap: Narrow passage at approximately y=25, 2-unit wide, highlighted with amber border
-- Labels: "WALL (x=25)" / "岩墙 (x=25)" and "GAP" / "缺口"
+### Wall Obstacle (精确坐标)
+- Position: Rectangular obstacle spanning **x=25.0 to x=26.0, y=10.0 to y=48.0**
+- Appearance: Dark gray (#374151), **1-unit thick**, with diagonal hatch pattern
+- **Critical: The wall does NOT span the full map height**. Two natural gaps exist at both ends:
+  - **Lower Gap**: y = 0 ~ 10 (height 10, wider) — labeled "LOWER GAP" / "下方缺口"
+  - **Upper Gap**: y = 48 ~ 50 (height 2, narrower) — labeled "UPPER GAP" / "上方缺口"
+- Wall label: "WALL (25~26, 10~48)" / "岩墙 (25~26, 10~48)"
+- Note annotation: "Agent A must detour through upper or lower gap" / "Agent A 必须从上方或下方缺口绕行"
 
 ### Agent A — Sand Crab (Pursuer)
 - Position: Left side of wall, approximately (5, 25)
@@ -105,18 +108,20 @@ Create a professional infographic following these specifications:
 - Capture radius: Dotted circle, radius = 3.0 units, labeled "CAPTURE B = 3.0"
 - Label: "AGENT B (TARGET)" / "Agent B（目标）"
 
-### Optimal Path
-- Curved dashed arrow starting from Agent A
-- Route: curves upward to the wall gap at y=25, passes through, then curves toward Agent B
+### Optimal Path & Phase 2 Detour (P2 绕行路径)
+- Agent A starts at (5, 25). A straight path to Agent B at (40, 25) is blocked by the wall (x=25~26, y=10~48).
+- From y=25, the distance to the lower gap (y=10) is ~15 units; to the upper gap (y=48) is ~23 units. The lower gap is closer.
+- **Phase 2 path (cognitive bottleneck / 认知瓶颈)**:
+  1. From (5, 25), move **downward** to approximately (5, 8) — approaching the lower gap
+  2. Move **horizontally right** through the lower gap (x: 5→26, y≈8) — crossing to the other side of the wall
+  3. From (26, 8), move **up and right** toward Agent B (40, 25)
 - Arrow style: Coral red (#E76F51), dashed line, arrowhead at end near Agent B
-- Label: "OPTIMAL PATH" / "最优路径"
-
-### Phase Indicators (Optional Enhancement)
-- Small color-coded markers along the path:
-  - Phase 1 (start to wall): Green dot, label "P1"
-  - Phase 2 (wall navigation): Yellow dot, label "P2"
-  - Phase 3 (post-wall): Green dot, label "P3"
-  - Phase 4 (hunt): Red dot, label "P4"
+- Path segmented with phase labels:
+  - **P1** (green dot): (5,25) → descent start — "Phase 1: Straight Commute"
+  - **P2** (yellow dot): downward detour + gap crossing — "Phase 2: Cognitive Bottleneck / 认知瓶颈"
+  - **P3** (green dot): post-wall approach — "Phase 3: Open Field"
+  - **P4** (red dot): final hunt near Agent B — "Phase 4: Parity Determinism"
+- Label: "OPTIMAL PATH (Lower Gap Detour)" / "最优路径（下方缺口绕行）"
 
 ## Legend Panel
 
@@ -126,14 +131,16 @@ Create a professional infographic following these specifications:
 | Dashed circle | Agent A movement range (3.0) |
 | Large dotted circle | Agent A perception (10.0) |
 | Dotted circle | Agent B capture radius (3.0) |
-| Dashed arrow | Optimal path around wall |
+| Dashed arrow | Optimal path: lower gap detour (down → through y=0~10 → up) |
 
 ## Text Labels (Bilingual)
 
 - Title: "THE SAND PIT ARENA" / "沙盘竞技场"
 - Subtitle: "50×50 Grid Pursuit Game" / "50×50 网格追逐博弈"
-- Wall: "WALL (x=25)" / "岩墙 (x=25)"
-- Gap: "GAP" / "缺口"
+- Wall: "WALL (25~26, 10~48)" / "岩墙 (25~26, 10~48)"
+- Lower Gap: "LOWER GAP (y=0~10)" / "下方缺口 (y=0~10)"
+- Upper Gap: "UPPER GAP (y=48~50)" / "上方缺口 (y=48~50)"
+- Path: "OPTIMAL PATH (Lower Gap Detour)" / "最优路径（下方缺口绕行）"
 - Agent A: "AGENT A (PURSUER)" / "Agent A（追击者）"
 - Agent B: "AGENT B (TARGET)" / "Agent B（目标）"
 - Move: "MOVE = 3.0"
