@@ -26,6 +26,9 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 
 **Key insight**: 1000–1200 tokens is the Pareto-optimal budget for this task. Beyond that, you are burning money for noise.
 
+![Three-Stage Threshold: Win Rate vs Token Budget](docs/images/win_rate_curve.png)
+*Figure 1: The non-linear three-stage threshold effect observed across DeepSeek Flash, Pro, and Kimi models. The steepest improvement occurs between 800–1200 tokens.*
+
 ### Five Core Thoughts
 
 1. **Budget Effects Are Phase-Locked**: Token budget only matters in Phase 2 (wall navigation). Phase 1/3 are physical commutes (budget elasticity = 0). Phase 4 is dominated by turn-order parity, not budget.
@@ -58,6 +61,9 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 
 **核心洞察**：1000–1200 tokens 是本任务的帕累托最优预算。超过此区间，就是在为噪声烧钱。
 
+![三阶段阈值：胜率随 Token 预算变化曲线](docs/images/win_rate_curve.png)
+*图 1：DeepSeek Flash、Pro 与 Kimi 模型上观察到的非线性三阶段阈值效应。最陡峭的提升发生在 800–1200 tokens 区间。*
+
 ### 五大核心思考
 
 1. **预算效应高度阶段锁定**：Token 预算仅在 Phase 2（绕墙阶段）有效。Phase 1/3 是纯物理通勤（预算弹性 = 0）；Phase 4 由回合奇偶性主导，与预算无关。
@@ -69,6 +75,9 @@ Through **724 controlled games** across two DeepSeek models (Flash & Pro) and te
 4. **奇偶性决定论**：在 Phase 4（追击阶段），相同距离下 A-first 轮次的胜率为 88%，B-first 轮次骤降至 14%。即使给予 20K tokens 的极端预算，LLM 也**不会**自发涌现出先后手博弈策略。
 
 5. **认知天花板假说**：更强的模型（Pro）存在内生的"认知饱和度" —— 其实际 Token 消耗不随预算增加而上升（r=0.015, ns）；而较弱模型（Flash）是预算驱动型（r=0.174, p<.001）。
+
+![四格漫画：沙蟹 vs 海葵 — The Sand Pit 游戏流程](docs/images/comic_4panel_sand_crab_vs_anemone.png)
+*图 2：四格漫画可视化 — 沙蟹（Agent A）与海葵（Agent B）演绎游戏的四个阶段。详见 `docs/comic_prompts/` 获取完整提示词。*
 
 ---
 
@@ -299,6 +308,9 @@ the_sand_pit/
 | Max Rounds | 50 | — |
 
 Agent A must navigate around the wall at x=25 to reach Agent B. The game tests spatial planning, obstacle avoidance, and strategic reasoning under token constraints.
+
+![Game Arena: 50×50 Grid with Wall and Agents](docs/images/game_arena_diagram.png)
+*Figure 2: The 50×50 grid arena. Agent A (pursuer) starts left of the wall; Agent B (target) starts right. The wall at x=25 creates the cognitive bottleneck.*
 
 **Four Phases**:
 - **Phase 1 (Pre-wall)**: Straight-line approach. Budget elasticity = 0.
