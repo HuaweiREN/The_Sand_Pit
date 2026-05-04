@@ -1,0 +1,54 @@
+{
+  "api": {
+    "api_key": "YOUR_API_KEY_HERE",
+    "base_url": "https://api.openai.com/v1",
+    "model_name": "gpt-4o-mini",
+    "temperature": 0.7,
+    "timeout": 30
+  },
+  "world": {
+    "map_size": 50,
+    "max_rounds": 50,
+    "turn_order_mode": "alternating"
+  },
+  "physics": {
+    "perception_radius": 10.0,
+    "move_step": 3.0,
+    "capture_radius": 0.5,
+    "agent_b_capture_radius": 3.0
+  },
+  "experiment": {
+    "token_budget": 600,
+    "prompt_strategy": "standard",
+    "num_runs": 5
+  },
+  "logging": {
+    "log_dir": "logs",
+    "log_level": "INFO",
+    "save_prompts": true,
+    "save_responses": true
+  },
+  "visualization": {
+    "cell_size": 15,
+    "update_interval": 500,
+    "show_perception_shadow": true,
+    "theme": "dark"
+  },
+  "spawn_points": {
+    "agent_a": [0, 0],
+    "agent_b": [40, 15]
+  },
+  "walls": [
+    {
+      "x1": 25.0,
+      "y1": 10.0,
+      "x2": 26.0,
+      "y2": 48.0,
+      "description": "Wall from (25,10) to (26,48). Agents cannot pass through."
+    }
+  ],
+  "prompt_templates": {
+    "minimal_system": "You are {agent_name} in a pursuit game.\n\nRules:\n- Map: {map_size}x{map_size}\n- Your step: 0 to {move_step:.2f} (you can move any distance from 0 to {move_step:.2f})\n- Win: Distance ≤ {capture_radius:.2f}\n- Opponent (Agent_B) is always static (never moves). Opponent capture radius: {agent_b_capture_radius:.2f}.\n- Wall: There is an IMPENETRABLE wall at x=25, from y=10 to y=48. You CANNOT cross this wall. If your move would cross the wall or land inside it, you stay in place.\n\nOutput ONLY JSON: {{\"x\": <number>, \"y\": <number>}}",
+    "standard_system": "You are Agent_A, a strategic solver in a pursuit simulation.\n\n## Environment\n- Dynamics: Max step {move_step:.2f}.\n- Your capture radius: {capture_radius:.2f}. Opponent (Agent_B, always static) capture radius: {agent_b_capture_radius:.2f}.\n- Perception: {perception_radius:.2f} units. Outside this is 'Dark Zone'.\n- Wall: There is an IMPENETRABLE wall at x=25, from y=10 to y=48. You CANNOT cross this wall. If your move would cross the wall or land inside it, you stay in place.\n\n## Victory Conditions\n- VICTORY: Capture Agent_B (reduce distance to ≤ your capture radius {capture_radius:.2f}).\n- DEFEAT: If max rounds reached OR Agent_B captures you (distance ≤ their capture radius {agent_b_capture_radius:.2f}).\n\n## Round Information\nCurrent Round: {current_round} / {max_rounds}\nTurn Order: {turn_order}\nTurn Order Rule: Turn order alternates every round (you and opponent take turns being FIRST).\n\n## Objectives & Constraints\n1. Optimization: Use your token budget to perform high-density mental simulations.\n2. Efficiency: Avoid filler phrases. Every word must contribute to the spatial or strategic resolution of the target.\n3. Flow: Your reasoning should be a continuous analytical monologue leading directly to the final coordinates.\n4. Finality: The JSON object must conclude with your 'x' and 'y' target.\n\n## Output Structure\nRespond ONLY in this JSON format:\n{{\n  \"thought_process\": \"<Dense spatial calculus. Use symbols/shorthand. No prose.>\",\n  \"x\": <number>,\n  \"y\": <number>\n}}"
+  }
+}
