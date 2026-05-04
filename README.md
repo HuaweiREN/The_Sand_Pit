@@ -86,6 +86,64 @@ All **724 game logs** are included in this repository under `log_final/`. Each s
 
 > **Security note**: All logs have been reviewed for API keys and secrets. The JSONL format only records `base_url`, `model_name`, `temperature`, and `timeout` — no `api_key` field is present.
 
+### Detailed Win / Loss / Draw Breakdown
+
+The tables below show the raw outcome counts for every model and token budget tested. All standard-mode experiments ran **40 games per budget** (except where noted); reasoning-mode experiments ran **20 games**.
+
+#### DeepSeek Flash (standard mode)
+
+| Budget | Wins | Draws | Losses | N | Win Rate | Draw Rate |
+|--------|------|-------|--------|---|----------|-----------|
+| 400 | 1 | 36 | 3 | 40 | 2.5% | 90.0% |
+| 600 | 5 | 32 | 3 | 40 | 12.5% | 80.0% |
+| 800 | 4 | 30 | 6 | 41 | 9.8% | 73.2% |
+| 1000 | 13 | 18 | 9 | 40 | 32.5% | 45.0% |
+| 1200 | 14 | 18 | 7 | 41 | 34.1% | 43.9% |
+| 1400 | 13 | 20 | 7 | 40 | 32.5% | 50.0% |
+| 1600 | 13 | 18 | 9 | 40 | 32.5% | 45.0% |
+| 1800 | 18 | 13 | 9 | 40 | 45.0% | 32.5% |
+| 2000 | 15 | 13 | 12 | 40 | 34.9% | 30.2% |
+
+#### DeepSeek Flash (reasoning mode, 20K tokens)
+
+| Budget | Wins | Draws | Losses | N | Win Rate | Draw Rate |
+|--------|------|-------|--------|---|----------|-----------|
+| 20000 | 13 | 2 | 5 | 20 | 65.0% | 10.0% |
+
+#### DeepSeek Pro (standard mode)
+
+| Budget | Wins | Draws | Losses | N | Win Rate | Draw Rate |
+|--------|------|-------|--------|---|----------|-----------|
+| 400 | 5 | 26 | 9 | 40 | 12.5% | 65.0% |
+| 600 | 22 | 5 | 13 | 40 | 55.0% | 12.5% |
+| 800 | 15 | 5 | 20 | 40 | 37.5% | 12.5% |
+| 1000 | 24 | 0 | 16 | 40 | 60.0% | 0.0% |
+| 1200 | 29 | 2 | 10 | 41 | 70.7% | 4.9% |
+| 1400 | 21 | 3 | 16 | 40 | 52.5% | 7.5% |
+| 1600 | 21 | 2 | 17 | 40 | 52.5% | 5.0% |
+| 1800 | 22 | 2 | 16 | 40 | 55.0% | 5.0% |
+| 2000 | 26 | 1 | 13 | 40 | 65.0% | 2.5% |
+
+#### DeepSeek Pro (reasoning mode, 20K tokens)
+
+| Budget | Wins | Draws | Losses | N | Win Rate | Draw Rate |
+|--------|------|-------|--------|---|----------|-----------|
+| 20000 | 16 | 0 | 4 | 20 | 80.0% | 0.0% |
+
+#### Kimi v2.6
+
+| Budget | Wins | Draws | Losses | N | Win Rate | Draw Rate |
+|--------|------|-------|--------|---|----------|-----------|
+| 400 | 0 | 26 | 14 | 26 | 0.0% | 100.0% |
+| 600 | 12 | 6 | 8 | 26 | 46.2% | 23.1% |
+| 800 | 20 | 0 | 14 | 34 | 58.8% | 0.0% |
+| 1000 | 15 | 0 | 17 | 32 | 46.9% | 0.0% |
+| 1200 | 18 | 0 | 17 | 35 | 51.4% | 0.0% |
+| 1400 | 22 | 0 | 18 | 40 | 55.0% | 0.0% |
+| 1600 | 30 | 0 | 10 | 40 | 75.0% | 0.0% |
+| 1800 | 20 | 0 | 20 | 40 | 50.0% | 0.0% |
+| 2000 | 20 | 0 | 20 | 40 | 50.0% | 0.0% |
+
 ### Aggregated Results (`results/`)
 
 - `results/win_rate_data.json` — Machine-readable statistics for every model × budget combination.
